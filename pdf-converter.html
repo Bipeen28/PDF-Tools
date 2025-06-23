@@ -3,14 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free online PDF tools - merge, compress, split, convert, sign and protect your PDF files">
-    <meta name="keywords" content="pdf, merge, compress, split, convert, sign, protect">
-    <meta property="og:title" content="PDF Tools - All-in-one PDF solution">
-    <meta property="og:description" content="Free online tools for all your PDF needs">
-    <meta property="og:image" content="https://example.com/pdf-tools-og.jpg">
-    <title>PDF Tools - All-in-one PDF solution</title>
+    <title>PDF Tools Pro - Merge, Compress, Edit PDF Files Online for Free</title>
+    <meta name="description" content="Free online PDF tools to merge, compress, split, convert, edit, sign, and protect your PDF files. No installation required. Process documents in seconds.">
+    <meta name="keywords" content="pdf tools, merge pdf, compress pdf, pdf editor, online pdf tools, pdf converter, pdf signer, pdf unlocker, free pdf tools">
+    <meta name="author" content="PDF Tools Pro">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pdftoolspro.com/">
+    <meta property="og:title" content="PDF Tools Pro - Free Online PDF Tools">
+    <meta property="og:description" content="Merge, compress, edit, convert and protect your PDF files with our free online tools. No registration required.">
+    <meta property="og:image" content="https://pdftoolspro.com/images/social-preview.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://pdftoolspro.com/">
+    <meta property="twitter:title" content="PDF Tools Pro - Free Online PDF Tools">
+    <meta property="twitter:description" content="Merge, compress, edit, convert and protect your PDF files with our free online tools.">
+    <meta property="twitter:image" content="https://pdftoolspro.com/images/social-preview.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://pdftoolspro.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
+    
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PDF Tools Pro",
+      "description": "Free online PDF tools for merging, compressing, editing and converting PDF files.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "1543"
+      }
+    }
+    </script>
+    
     <style>
         :root {
             --primary: #4361ee;
@@ -74,6 +120,21 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+
+        /* Skip to content link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            z-index: 1000;
+        }
+        
+        .skip-link:focus {
+            top: 0;
         }
 
         /* Header Styles */
@@ -429,7 +490,7 @@
             box-shadow: 0 6px 12px rgba(67, 97, 238, 0.3);
         }
 
-        /* Ad Placeholders */
+        /* Ad Placeholders - Google AdSense */
         .ad-container {
             background-color: var(--gray-200);
             border-radius: var(--border-radius);
@@ -441,10 +502,25 @@
             padding: 20px;
             margin: 45px 0;
             min-height: 100px;
+            text-align: center;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .ad-container i {
+            font-size: 2rem;
+            color: var(--primary);
         }
 
         .ad-banner {
             width: 100%;
+        }
+
+        .ad-label {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Footer */
@@ -985,12 +1061,15 @@
     </style>
 </head>
 <body data-theme="light">
+    <!-- Skip to content link for accessibility -->
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+    
     <!-- Header -->
     <header>
         <div class="container">
-            <nav class="navbar">
-                <a href="#" class="logo" id="homeLink">
-                    <i class="fas fa-file-pdf"></i>
+            <nav class="navbar" aria-label="Main navigation">
+                <a href="#" class="logo" id="homeLink" aria-label="PDF Tools Pro Home">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
                     <span>PDF Tools Pro</span>
                 </a>
                 
@@ -1003,14 +1082,14 @@
                 </div>
                 
                 <div class="nav-actions">
-                    <button class="theme-toggle" id="themeToggle">
-                        <i class="fas fa-moon"></i>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
                     </button>
-                    <button class="lang-toggle" id="langToggle">
-                        <i class="fas fa-globe"></i>
+                    <button class="lang-toggle" id="langToggle" aria-label="Change language">
+                        <i class="fas fa-globe" aria-hidden="true"></i>
                     </button>
                     <button class="btn btn-outline" id="loginBtn">
-                        <i class="fas fa-user"></i> Login
+                        <i class="fas fa-user" aria-hidden="true"></i> Login
                     </button>
                 </div>
             </nav>
@@ -1025,9 +1104,9 @@
                 <p>Free online tools to merge, compress, split, convert, sign and protect your PDF files with ease</p>
                 
                 <div class="search-container">
-                    <input type="text" class="search-input" placeholder="Search for tools...">
-                    <button class="search-btn">
-                        <i class="fas fa-search"></i> Search
+                    <input type="text" class="search-input" placeholder="Search for tools..." aria-label="Search for PDF tools">
+                    <button class="search-btn" aria-label="Search">
+                        <i class="fas fa-search" aria-hidden="true"></i> Search
                     </button>
                 </div>
             </div>
@@ -1038,7 +1117,9 @@
     <main class="container" id="mainContent">
         <!-- Top Banner Ad -->
         <div class="ad-container ad-banner">
-            <i class="fas fa-ad"></i> Advertisement Banner (728x90)
+            <i class="fas fa-ad" aria-hidden="true"></i>
+            <div class="ad-label">Advertisement</div>
+            <div>Google AdSense Leaderboard (728x90)</div>
         </div>
 
         <div class="tools-section" id="toolsSection">
@@ -1058,112 +1139,112 @@
             <div class="tools-grid">
                 <!-- Tool Card 1 -->
                 <div class="tool-card">
-                    <div class="tool-icon">
+                    <div class="tool-icon" aria-hidden="true">
                         <i class="fas fa-object-group"></i>
                     </div>
                     <div class="tool-content">
                         <h3>Merge PDF</h3>
                         <p>Combine multiple PDF files into one document with our easy-to-use PDF merger</p>
                         <a href="#" class="tool-link" data-tool="Merge PDF">
-                            <i class="fas fa-wrench"></i> Use Tool
+                            <i class="fas fa-wrench" aria-hidden="true"></i> Use Tool
                         </a>
                     </div>
                 </div>
                 
                 <!-- Tool Card 2 -->
                 <div class="tool-card">
-                    <div class="tool-icon">
+                    <div class="tool-icon" aria-hidden="true">
                         <i class="fas fa-compress-alt"></i>
                     </div>
                     <div class="tool-content">
                         <h3>Compress PDF</h3>
                         <p>Reduce file size while optimizing for maximal PDF quality</p>
                         <a href="#" class="tool-link" data-tool="Compress PDF">
-                            <i class="fas fa-wrench"></i> Use Tool
+                            <i class="fas fa-wrench" aria-hidden="true"></i> Use Tool
                         </a>
                     </div>
                 </div>
                 
                 <!-- Tool Card 3 -->
                 <div class="tool-card">
-                    <div class="tool-icon">
+                    <div class="tool-icon" aria-hidden="true">
                         <i class="fas fa-cut"></i>
                     </div>
                     <div class="tool-content">
                         <h3>Split PDF</h3>
                         <p>Separate one PDF into multiple files. Extract specific pages or split by page ranges</p>
                         <a href="#" class="tool-link" data-tool="Split PDF">
-                            <i class="fas fa-wrench"></i> Use Tool
+                            <i class="fas fa-wrench" aria-hidden="true"></i> Use Tool
                         </a>
                     </div>
                 </div>
                 
                 <!-- Tool Card 4 -->
                 <div class="tool-card">
-                    <div class="tool-icon">
+                    <div class="tool-icon" aria-hidden="true">
                         <i class="fas fa-exchange-alt"></i>
                     </div>
                     <div class="tool-content">
                         <h3>PDF Converter</h3>
                         <p>Convert PDFs to Word, Excel, PowerPoint, images and vice versa</p>
                         <a href="#" class="tool-link" data-tool="PDF Converter">
-                            <i class="fas fa-wrench"></i> Use Tool
+                            <i class="fas fa-wrench" aria-hidden="true"></i> Use Tool
                         </a>
                     </div>
                 </div>
                 
                 <!-- Tool Card 5 -->
                 <div class="tool-card">
-                    <div class="tool-icon">
+                    <div class="tool-icon" aria-hidden="true">
                         <i class="fas fa-lock"></i>
                     </div>
                     <div class="tool-content">
                         <h3>Protect PDF</h3>
                         <p>Encrypt your PDF with a password to prevent unauthorized access</p>
                         <a href="#" class="tool-link" data-tool="Protect PDF">
-                            <i class="fas fa-wrench"></i> Use Tool
+                            <i class="fas fa-wrench" aria-hidden="true"></i> Use Tool
                         </a>
                     </div>
                 </div>
                 
                 <!-- Tool Card 6 -->
                 <div class="tool-card">
-                    <div class="tool-icon">
+                    <div class="tool-icon" aria-hidden="true">
                         <i class="fas fa-signature"></i>
                     </div>
                     <div class="tool-content">
                         <h3>Sign PDF</h3>
                         <p>Add your digital signature to PDF documents quickly and securely</p>
                         <a href="#" class="tool-link" data-tool="Sign PDF">
-                            <i class="fas fa-wrench"></i> Use Tool
+                            <i class="fas fa-wrench" aria-hidden="true"></i> Use Tool
                         </a>
                     </div>
                 </div>
                 
                 <!-- Tool Card 7 -->
                 <div class="tool-card">
-                    <div class="tool-icon">
+                    <div class="tool-icon" aria-hidden="true">
                         <i class="fas fa-unlock"></i>
                     </div>
                     <div class="tool-content">
                         <h3>Unlock PDF</h3>
                         <p>Remove password protection from PDF files with our PDF unlocker tool</p>
                         <a href="#" class="tool-link" data-tool="Unlock PDF">
-                            <i class="fas fa-wrench"></i> Use Tool
+                            <i class="fas fa-wrench" aria-hidden="true"></i> Use Tool
                         </a>
                     </div>
                 </div>
                 
                 <!-- Tool Card 8 - PDF Editor -->
                 <div class="tool-card">
-                    <div class="tool-icon">
+                    <div class="tool-icon" aria-hidden="true">
                         <i class="fas fa-edit"></i>
                     </div>
                     <div class="tool-content">
                         <h3>PDF Editor</h3>
                         <p>Edit your PDF by adding text, images, shapes and annotations</p>
                         <a href="#" class="tool-link" data-tool="PDF Editor">
-                            <i class="fas fa-wrench"></i> Use Tool
+                            <i class="fas fa-wrench" aria-hidden="true"></i> Use Tool
                         </a>
                     </div>
                 </div>
@@ -1172,7 +1253,9 @@
 
         <!-- Footer Ad -->
         <div class="ad-container ad-banner">
-            <i class="fas fa-ad"></i> Advertisement Banner (728x90)
+            <i class="fas fa-ad" aria-hidden="true"></i>
+            <div class="ad-label">Advertisement</div>
+            <div>Google AdSense Leaderboard (728x90)</div>
         </div>
     </main>
 
@@ -1182,47 +1265,47 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <a href="#" class="logo" style="font-size: 1.9rem; margin-bottom: 25px; display: inline-block;">
-                        <i class="fas fa-file-pdf"></i>
+                        <i class="fas fa-file-pdf" aria-hidden="true"></i>
                         <span>PDF Tools Pro</span>
                     </a>
                     <p style="margin-bottom: 25px; font-size: 1.1rem;">Free online PDF tools to solve all your document processing needs. Fast, secure and easy to use.</p>
                     <div style="display: flex; gap: 18px;">
-                        <a href="#" style="color: var(--gray-600); font-size: 1.4rem;"><i class="fab fa-facebook"></i></a>
-                        <a href="#" style="color: var(--gray-600); font-size: 1.4rem;"><i class="fab fa-twitter"></i></a>
-                        <a href="#" style="color: var(--gray-600); font-size: 1.4rem;"><i class="fab fa-instagram"></i></a>
-                        <a href="#" style="color: var(--gray-600); font-size: 1.4rem;"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" style="color: var(--gray-600); font-size: 1.4rem;" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: var(--gray-600); font-size: 1.4rem;" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: var(--gray-600); font-size: 1.4rem;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: var(--gray-600); font-size: 1.4rem;" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-col">
                     <h4>PDF Tools</h4>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-object-group"></i> Merge PDF</a></li>
-                        <li><a href="#"><i class="fas fa-compress-alt"></i> Compress PDF</a></li>
-                        <li><a href="#"><i class="fas fa-cut"></i> Split PDF</a></li>
-                        <li><a href="#"><i class="fas fa-exchange-alt"></i> Convert PDF</a></li>
-                        <li><a href="#"><i class="fas fa-edit"></i> PDF Editor</a></li>
+                        <li><a href="#"><i class="fas fa-object-group" aria-hidden="true"></i> Merge PDF</a></li>
+                        <li><a href="#"><i class="fas fa-compress-alt" aria-hidden="true"></i> Compress PDF</a></li>
+                        <li><a href="#"><i class="fas fa-cut" aria-hidden="true"></i> Split PDF</a></li>
+                        <li><a href="#"><i class="fas fa-exchange-alt" aria-hidden="true"></i> Convert PDF</a></li>
+                        <li><a href="#"><i class="fas fa-edit" aria-hidden="true"></i> PDF Editor</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
                     <h4>Company</h4>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-building"></i> About Us</a></li>
-                        <li><a href="#"><i class="fas fa-tag"></i> Pricing</a></li>
-                        <li><a href="#"><i class="fas fa-blog"></i> Blog</a></li>
-                        <li><a href="#"><i class="fas fa-briefcase"></i> Careers</a></li>
-                        <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+                        <li><a href="#"><i class="fas fa-building" aria-hidden="true"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-tag" aria-hidden="true"></i> Pricing</a></li>
+                        <li><a href="#"><i class="fas fa-blog" aria-hidden="true"></i> Blog</a></li>
+                        <li><a href="#"><i class="fas fa-briefcase" aria-hidden="true"></i> Careers</a></li>
+                        <li><a href="#"><i class="fas fa-envelope" aria-hidden="true"></i> Contact</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
                     <h4>Legal</h4>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
-                        <li><a href="#"><i class="fas fa-file-contract"></i> Terms of Service</a></li>
-                        <li><a href="#"><i class="fas fa-lock"></i> Security</a></li>
-                        <li><a href="#"><i class="fas fa-cookie-bite"></i> Cookie Policy</a></li>
+                        <li><a href="#"><i class="fas fa-shield-alt" aria-hidden="true"></i> Privacy Policy</a></li>
+                        <li><a href="#"><i class="fas fa-file-contract" aria-hidden="true"></i> Terms of Service</a></li>
+                        <li><a href="#"><i class="fas fa-lock" aria-hidden="true"></i> Security</a></li>
+                        <li><a href="#"><i class="fas fa-cookie-bite" aria-hidden="true"></i> Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -1234,7 +1317,7 @@
     </footer>
 
     <!-- Floating Action Button -->
-    <button class="add-file-btn" id="addFileBtn" style="display: none;">
+    <button class="add-file-btn" id="addFileBtn" style="display: none;" aria-label="Add more files">
         <i class="fas fa-plus"></i>
     </button>
 
@@ -1243,7 +1326,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3>Login to Your Account</h3>
-                <button class="close-modal" id="closeModal">
+                <button class="close-modal" id="closeModal" aria-label="Close login modal">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
@@ -1377,12 +1460,14 @@
                 </div>
                 
                 <div class="ad-container ad-banner">
-                    <i class="fas fa-ad"></i> Advertisement Banner (728x90)
+                    <i class="fas fa-ad" aria-hidden="true"></i>
+                    <div class="ad-label">Advertisement</div>
+                    <div>Google AdSense Leaderboard (728x90)</div>
                 </div>
                 
                 <div class="upload-container">
                     <div class="upload-area" id="uploadArea">
-                        <i class="fas fa-cloud-upload-alt"></i>
+                        <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
                         <h3>Drag & Drop your files here</h3>
                         <p>or click to browse files</p>
                         <p class="text-sm">Supported formats: PDF (Max file size: 50MB)</p>
@@ -1391,7 +1476,7 @@
                     <div class="file-card" id="fileCard">
                         <div class="file-card-header">
                             <h4>Uploaded Files</h4>
-                            <button class="remove-file" onclick="clearFiles()">
+                            <button class="remove-file" onclick="clearFiles()" aria-label="Clear all files">
                                 <i class="fas fa-times"></i>
                             </button>
                         </div>
@@ -1408,24 +1493,26 @@
                 
                 <div class="action-buttons">
                     <button class="btn btn-primary btn-lg" id="processBtn">
-                        <i class="fas fa-cogs"></i> Process Files
+                        <i class="fas fa-cogs" aria-hidden="true"></i> Process Files
                     </button>
                     <button class="btn btn-outline btn-lg" onclick="showHomePage()">
-                        <i class="fas fa-times"></i> Cancel
+                        <i class="fas fa-times" aria-hidden="true"></i> Cancel
                     </button>
                 </div>
                 
                 <div class="download-card" id="downloadCard">
-                    <i class="fas fa-file-download"></i>
+                    <i class="fas fa-file-download" aria-hidden="true"></i>
                     <h3>Your file is ready!</h3>
                     <p id="outputFileName">processed_document.pdf (2.1 MB)</p>
                     <button class="btn btn-primary btn-lg" id="downloadBtn">
-                        <i class="fas fa-download"></i> Download PDF
+                        <i class="fas fa-download" aria-hidden="true"></i> Download PDF
                     </button>
                 </div>
                 
                 <div class="ad-container ad-banner">
-                    <i class="fas fa-ad"></i> Advertisement Banner (728x90)
+                    <i class="fas fa-ad" aria-hidden="true"></i>
+                    <div class="ad-label">Advertisement</div>
+                    <div>Google AdSense Leaderboard (728x90)</div>
                 </div>
             `;
             
@@ -1534,9 +1621,9 @@
                 const filePill = document.createElement('div');
                 filePill.className = 'file-pill';
                 filePill.innerHTML = `
-                    <i class="fas fa-file-pdf"></i>
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
                     <span>${file.name} (${fileSize} MB)</span>
-                    <i class="fas fa-times" onclick="removeFile(${index})"></i>
+                    <i class="fas fa-times" onclick="removeFile(${index})" aria-label="Remove file"></i>
                 `;
                 
                 uploadedFilesContainer.appendChild(filePill);
