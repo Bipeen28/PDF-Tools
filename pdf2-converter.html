@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Tools Pro - Merge, Compress, Edit PDF Files Online for Free</title>
+    <meta name="description" content="Free online PDF tools to merge, compress, split, convert, edit, sign, and protect your PDF files. No installation required. Process documents in seconds.">
+    <meta name="keywords" content="pdf tools, merge pdf, compress pdf, pdf editor, online pdf tools, pdf converter, pdf signer, pdf unlocker, free pdf tools">
+    <meta name="author" content="PDF Tools Pro">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pdftoolspro.com/">
+    <meta property="og:title" content="PDF Tools Pro - Free Online PDF Tools">
+    <meta property="og:description" content="Merge, compress, edit, convert and protect your PDF files with our free online tools. No registration required.">
+    <meta property="og:image" content="https://pdftoolspro.com/images/social-preview.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://pdftoolspro.com/">
+    <meta property="twitter:title" content="PDF Tools Pro - Free Online PDF Tools">
+    <meta property="twitter:description" content="Merge, compress, edit, convert and protect your PDF files with our free online tools.">
+    <meta property="twitter:image" content="https://pdftoolspro.com/images/social-preview.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://pdftoolspro.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PDF Tools Pro",
+      "description": "Free online PDF tools for merging, compressing, editing and converting PDF files.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "1543"
+      }
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --primary-light: #eef2ff;
+            --secondary: #7209b7;
+            --success: #06d6a0;
+            --warning: #ffd166;
+            --danger: #ef476f;
+            --light: #ffffff;
+            --dark: #121826;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-400: #ced4da;
+            --gray-500: #adb5bd;
+            --gray-600: #6c757d;
+            --gray-700: #495057;
+            --gray-800: #343a40;
+            --gray-900: #212529;
+            --border-radius: 16px;
+            --border-radius-sm: 8px;
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow: 0 8px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 12px 24px rgba(0,0,0,0.12);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --light: #1a2236;
+            --dark: #f0f2f5;
+            --primary-light: #2d3a6e;
+            --gray-100: #1e1e2e;
+            --gray-200: #252538;
+            --gray-300: #2e2e48;
+            --gray-400: #3a3a5a;
+            --gray-500: #5a5a7a;
+            --gray-600: #7a7a9a;
+            --gray-700: #9a9aba;
+            --gray-800: #babada;
+            --gray-900: #dadafa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            transition: var(--transition);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Skip to content link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            z-index: 1000;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--light);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            font-size: 1.05rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: var(--border-radius-sm);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 6px 12px rgba(67, 97, 238, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(67, 97, 238, 0.35);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--gray-300);
+            color: var(--gray-700);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--gray-200);
+            border-color: var(--gray-400);
+        }
+
+        .theme-toggle, .lang-toggle {
+            background: none;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--gray-700);
+            transition: var(--transition);
+            background-color: var(--gray-200);
+            font-size: 1.1rem;
+        }
+
+        .theme-toggle:hover, .lang-toggle:hover {
+            background-color: var(--gray-300);
+            transform: rotate(10deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 90px 0 70px;
+            text-align: center;
+            background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+            color: white;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjEiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIiBvcGFjaXR5PSIwLjEiLz48L3N2Zz4=');
+            opacity: 0.2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .search-container {
+            max-width: 650px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 18px 28px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-lg);
+            background-color: rgba(255,255,255,0.15);
+            color: white;
+            backdrop-filter: blur(4px);
+        }
+
+        .search-input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            background: white;
+            color: var(--primary);
+            border: none;
+            border-radius: 50px;
+            padding: 12px 28px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            font-size: 1rem;
+        }
+
+        .search-btn:hover {
+            background-color: var(--primary-light);
+            color: white;
+        }
+
+        /* Tools Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .section-title p {
+            color: var(--gray-600);
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 45px;
+        }
+
+        .filter-btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            background-color: var(--gray-200);
+            color: var(--gray-700);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 6px 12px rgba(67, 97, 238, 0.25);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 35px;
+            margin-bottom: 70px;
+        }
+
+        .tool-card {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid var(--gray-200);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tool-icon {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #4361ee 0%, #7209b7 100%);
+            color: white;
+            font-size: 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-icon::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+            transform: rotate(30deg);
+        }
+
+        .tool-content {
+            padding: 28px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-content h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .tool-content p {
+            color: var(--gray-600);
+            margin-bottom: 25px;
+            flex-grow: 1;
+            font-size: 1.05rem;
+        }
+
+        .tool-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius-sm);
+            font-weight: 500;
+            transition: var(--transition);
+            text-align: center;
+            width: 100%;
+            font-size: 1.05rem;
+        }
+
+        .tool-link:hover {
+            background: var(--primary-dark);
+            box-shadow: 0 6px 12px rgba(67, 97, 238, 0.3);
+        }
+
+        /* Ad Placeholders - Google AdSense */
+        .ad-container {
+            background-color: var(--gray-200);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-600);
+            font-size: 1rem;
+            padding: 20px;
+            margin: 45px 0;
+            min-height: 100px;
+            text-align: center;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .ad-container i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .ad-banner {
+            width: 100%;
+        }
+
+        .ad-label {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--light);
+            padding: 70px 0 35px;
+            margin-top: 70px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.03);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 45px;
+            margin-bottom: 45px;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 25px;
+            color: var(--dark);
+            font-size: 1.3rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 18px;
+        }
+
+        .footer-links a {
+            color: var(--gray-600);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05rem;
+        }
+
+        .footer-links a i {
+            width: 24px;
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 35px;
+            border-top: 1px solid var(--gray-300);
+            color: var(--gray-600);
+            font-size: 1rem;
+        }
+
+        /* Tool Page */
+        .tool-page {
+            padding: 70px 0;
+        }
+
+        .tool-header {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .tool-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .tool-header p {
+            color: var(--gray-600);
+            max-width: 750px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+        }
+
+        .upload-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .upload-area {
+            background-color: var(--light);
+            border: 2px dashed var(--gray-300);
+            border-radius: var(--border-radius);
+            padding: 50px 30px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 280px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+
+        .upload-area:hover, .upload-area.dragover {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .upload-area i {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .upload-area h3 {
+            margin-bottom: 12px;
+            color: var(--dark);
+            font-size: 1.6rem;
+        }
+
+        .upload-area p {
+            color: var(--gray-600);
+            margin-bottom: 20px;
+            max-width: 80%;
+            font-size: 1.1rem;
+        }
+
+        .add-file-btn {
+            background-color: var(--success);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(6, 214, 160, 0.35);
+            transition: var(--transition);
+            position: absolute;
+            bottom: -27px;
+            right: 30px;
+            z-index: 10;
+        }
+
+        .add-file-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 8px 20px rgba(6, 214, 160, 0.45);
+        }
+
+        .file-card {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-200);
+            display: none;
+        }
+
+        .file-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .file-card-header h4 {
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.4rem;
+        }
+
+        .remove-file {
+            background: none;
+            border: none;
+            color: var(--danger);
+            cursor: pointer;
+            font-size: 1.4rem;
+            transition: var(--transition);
+        }
+
+        .remove-file:hover {
+            transform: scale(1.2);
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 25px;
+            padding: 18px;
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius-sm);
+        }
+
+        .file-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .file-details {
+            flex-grow: 1;
+        }
+
+        .file-name {
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--dark);
+            font-size: 1.2rem;
+        }
+
+        .file-size {
+            color: var(--gray-600);
+            font-size: 1rem;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .progress-container {
+            margin: 35px 0;
+            background-color: var(--gray-100);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            display: none;
+        }
+
+        .progress-bar {
+            height: 12px;
+            background-color: var(--gray-300);
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 18px;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: var(--gray-700);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .btn-lg {
+            padding: 16px 36px;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        .download-card {
+            background: linear-gradient(135deg, var(--success), #059669);
+            color: white;
+            padding: 35px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-top: 45px;
+            display: none;
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .download-card i {
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+        }
+
+        .download-card h3 {
+            margin-bottom: 18px;
+            font-size: 2rem;
+        }
+
+        .download-card p {
+            margin-bottom: 28px;
+            font-size: 1.2rem;
+        }
+
+        /* Uploaded Files */
+        .uploaded-files {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .file-pill {
+            background-color: var(--gray-200);
+            padding: 10px 18px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        .file-pill i {
+            color: var(--danger);
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 70px 0 50px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.15rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .tool-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .add-file-btn {
+                right: 50%;
+                transform: translateX(50%);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar {
+                padding: 15px 0;
+            }
+            
+            .logo span {
+                font-size: 1.5rem;
+            }
+            
+            .hero {
+                padding: 60px 0 40px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.05rem;
+            }
+            
+            .search-input {
+                padding: 16px 22px;
+                font-size: 1rem;
+            }
+            
+            .search-btn {
+                padding: 10px 22px;
+                font-size: 0.95rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.9rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .tool-header h1 {
+                font-size: 1.9rem;
+            }
+
+            .btn {
+                padding: 9px 18px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 450px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-header {
+            padding: 25px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+
+        .modal-header h3 {
+            font-size: 1.8rem;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--gray-700);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--border-radius-sm);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        .modal-footer {
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Skip to content link for accessibility -->
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar" aria-label="Main navigation">
+                <a href="#" class="logo" id="homeLink" aria-label="PDF Tools Pro Home">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <span>PDF Tools Pro</span>
+                </a>
+                
+                <div class="nav-links">
+                    <a href="#" class="active" id="homeNav">Home</a>
+                    <a href="#" id="allToolsNav">All Tools</a>
+                    <a href="#" id="pricingNav">Pricing</a>
+                    <a href="#" id="blogNav">Blog</a>
+                    <a href="#" id="contactNav">Contact</a>
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon" aria-hidden="true"></i>
+                    </button>
+                    <button class="lang-toggle" id="langToggle" aria-label="Change language">
+                        <i class="fas fa-globe" aria-hidden="true"></i>
+                    </button>
+                    <button class="btn btn-outline" id="loginBtn">
+                        <i class="fas fa-user" aria-hidden="true"></i> Login
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="heroSection">
+        <div class="container">
+            <div class="hero-content">
+                <h1>All-in-One PDF Solution</h1>
+                <p>Free online tools to merge, compress, split, convert, sign and protect your PDF files with ease</p>
+                
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search for tools..." aria-label="Search for PDF tools">
+                    <button class="search-btn" aria-label="Search">
+                        <i class="fas fa-search" aria-hidden="true"></i> Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container" id="mainContent">
+        <!-- Top Banner Ad -->
+        <div class="ad-container ad-banner">
+            <i class="fas fa-ad" aria-hidden="true"></i>
+            <div class="ad-label">Advertisement</div>
+            <div>Google AdSense Leaderboard (728x90)</div>
+        </div>
+
+        <div class="tools-section" id="toolsSection">
+            <div class="section-title">
+                <h2>Powerful PDF Tools</h2>
+                <p>Choose from our collection of free PDF tools to solve all your document needs</p>
+            </div>
+            
+            <div class="filters">
+                <button class="filter-btn active">All Tools</button>
+                <button class="filter-btn">Edit</button>
+                <button class="filter-btn">Convert</button>
+                <button class="filter-btn">Secure</button>
+                <button class="filter-btn">Other</button>
+            </div>
+            
+            <div class="tools-grid">
+                <!-- Tool Card 1 -->
+                <div class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">
+                        <i class="fas fa-object-group"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Merge PDF</h3>
+                        <p>Combine multiple PDF files into one document with our easy-to-use PDF merger</p>
+                        <a href="#" class="tool-link" data-tool="Merge PDF">
+                            <i class="fas fa-wrench" aria-hidden="true"></i> Use Tool
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 2 -->
+                <div class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">
+                        <i class="fas fa-compress-alt"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Compress PDF</h3>
+                        <p>Reduce file size while optimizing for maximal PDF quality</p>
+                        <a href="#" class="tool-link" data-tool="Compress PDF">
+                            <i class="fas fa-wrench" aria-hidden="true"></i> Use Tool
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 3 -->
+                <div class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Split PDF</h3>
+                        <p>Separate one PDF into multiple files. Extract specific pages or split by page ranges</p>
+                        <a href="#" class="tool-link" data-tool="Split PDF">
+                            <i class="fas fa-wrench" aria-hidden="true"></i> Use Tool
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 4 -->
+                <div class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>PDF Converter</h3>
+                        <p>Convert PDFs to Word, Excel, PowerPoint, images and vice versa</p>
+                        <a href="#" class="tool-link" data-tool="PDF Converter">
+                            <i class="fas fa-wrench" aria-hidden="true"></i> Use Tool
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 5 -->
+                <div class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Protect PDF</h3>
+                        <p>Encrypt your PDF with a password to prevent unauthorized access</p>
+                        <a href="#" class="tool-link" data-tool="Protect PDF">
+                            <i class="fas fa-wrench" aria-hidden="true"></i> Use Tool
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 6 -->
+                <div class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">
+                        <i class="fas fa-signature"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Sign PDF</h3>
+                        <p>Add your digital signature to PDF documents quickly and securely</p>
+                        <a href="#" class="tool-link" data-tool="Sign PDF">
+                            <i class="fas fa-wrench" aria-hidden="true"></i> Use Tool
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 7 -->
+                <div class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">
+                        <i class="fas fa-unlock"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Unlock PDF</h3>
+                        <p>Remove password protection from PDF files with our PDF unlocker tool</p>
+                        <a href="#" class="tool-link" data-tool="Unlock PDF">
+                            <i class="fas fa-wrench" aria-hidden="true"></i> Use Tool
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Tool Card 8 - PDF Editor -->
+                <div class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>PDF Editor</h3>
+                        <p>Edit your PDF by adding text, images, shapes and annotations</p>
+                        <a href="#" class="tool-link" data-tool="PDF Editor">
+                            <i class="fas fa-wrench" aria-hidden="true"></i> Use Tool
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Ad -->
+        <div class="ad-container ad-banner">
+            <i class="fas fa-ad" aria-hidden="true"></i>
+            <div class="ad-label">Advertisement</div>
+            <div>Google AdSense Leaderboard (728x90)</div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footerSection">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="font-size: 1.9rem; margin-bottom: 25px; display: inline-block;">
+                        <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                        <span>PDF Tools Pro</span>
+                    </a>
+                    <p style="margin-bottom: 25px; font-size: 1.1rem;">Free online PDF tools to solve all your document processing needs. Fast, secure and easy to use.</p>
+                    <div style="display: flex; gap: 18px;">
+                        <a href="#" style="color: var(--gray-600); font-size: 1.4rem;" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: var(--gray-600); font-size: 1.4rem;" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: var(--gray-600); font-size: 1.4rem;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: var(--gray-600); font-size: 1.4rem;" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>PDF Tools</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-object-group" aria-hidden="true"></i> Merge PDF</a></li>
+                        <li><a href="#"><i class="fas fa-compress-alt" aria-hidden="true"></i> Compress PDF</a></li>
+                        <li><a href="#"><i class="fas fa-cut" aria-hidden="true"></i> Split PDF</a></li>
+                        <li><a href="#"><i class="fas fa-exchange-alt" aria-hidden="true"></i> Convert PDF</a></li>
+                        <li><a href="#"><i class="fas fa-edit" aria-hidden="true"></i> PDF Editor</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-building" aria-hidden="true"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-tag" aria-hidden="true"></i> Pricing</a></li>
+                        <li><a href="#"><i class="fas fa-blog" aria-hidden="true"></i> Blog</a></li>
+                        <li><a href="#"><i class="fas fa-briefcase" aria-hidden="true"></i> Careers</a></li>
+                        <li><a href="#"><i class="fas fa-envelope" aria-hidden="true"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-shield-alt" aria-hidden="true"></i> Privacy Policy</a></li>
+                        <li><a href="#"><i class="fas fa-file-contract" aria-hidden="true"></i> Terms of Service</a></li>
+                        <li><a href="#"><i class="fas fa-lock" aria-hidden="true"></i> Security</a></li>
+                        <li><a href="#"><i class="fas fa-cookie-bite" aria-hidden="true"></i> Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 PDF Tools Pro. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <button class="add-file-btn" id="addFileBtn" style="display: none;" aria-label="Add more files">
+        <i class="fas fa-plus"></i>
+    </button>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Login to Your Account</h3>
+                <button class="close-modal" id="closeModal" aria-label="Close login modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+                <button class="btn btn-primary" style="width: 100%;">Login</button>
+            </div>
+            <div class="modal-footer">
+                <a href="#" style="color: var(--primary);">Forgot Password?</a>
+                <a href="#" style="color: var(--primary);">Create Account</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Access jsPDF from the global namespace
+        const { jsPDF } = window.jspdf;
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const addFileBtn = document.getElementById('addFileBtn');
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+        
+        function updateThemeIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+        
+        // Navigation
+        document.getElementById('homeLink').addEventListener('click', (e) => {
+            e.preventDefault();
+            showHomePage();
+        });
+        
+        document.getElementById('homeNav').addEventListener('click', (e) => {
+            e.preventDefault();
+            showHomePage();
+        });
+        
+        document.getElementById('allToolsNav').addEventListener('click', (e) => {
+            e.preventDefault();
+            showHomePage();
+            document.querySelector('.tools-section').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        function showHomePage() {
+            document.getElementById('heroSection').style.display = 'block';
+            document.getElementById('toolsSection').style.display = 'block';
+            document.getElementById('footerSection').style.display = 'block';
+            document.querySelector('.tool-page')?.remove();
+            addFileBtn.style.display = 'none';
+            
+            // Update active nav
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.getElementById('homeNav').classList.add('active');
+        }
+        
+        // Login Modal
+        document.getElementById('loginBtn').addEventListener('click', () => {
+            document.getElementById('loginModal').style.display = 'flex';
+        });
+        
+        document.getElementById('closeModal').addEventListener('click', () => {
+            document.getElementById('loginModal').style.display = 'none';
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === document.getElementById('loginModal')) {
+                document.getElementById('loginModal').style.display = 'none';
+            }
+        });
+        
+        // Tool Page Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const toolLinks = document.querySelectorAll('.tool-link');
+            toolLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const toolName = this.getAttribute('data-tool');
+                    showToolPage(toolName);
+                });
+            });
+        });
+        
+        let uploadedFiles = [];
+        let currentTool = '';
+        
+        function showToolPage(toolName) {
+            currentTool = toolName;
+            // Hide all sections
+            document.getElementById('heroSection').style.display = 'none';
+            document.getElementById('toolsSection').style.display = 'none';
+            document.getElementById('footerSection').style.display = 'none';
+            
+            // Create tool page
+            const main = document.querySelector('main');
+            const existingToolPage = document.querySelector('.tool-page');
+            if (existingToolPage) existingToolPage.remove();
+            
+            const toolPage = document.createElement('div');
+            toolPage.className = 'tool-page';
+            toolPage.innerHTML = `
+                <div class="tool-header">
+                    <h1>${toolName}</h1>
+                    <p>Use our free online tool to ${toolName.toLowerCase()} your PDF files</p>
+                </div>
+                
+                <div class="ad-container ad-banner">
+                    <i class="fas fa-ad" aria-hidden="true"></i>
+                    <div class="ad-label">Advertisement</div>
+                    <div>Google AdSense Leaderboard (728x90)</div>
+                </div>
+                
+                <div class="upload-container">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
+                        <h3>Drag & Drop your files here</h3>
+                        <p>or click to browse files</p>
+                        <p class="text-sm">Supported formats: PDF (Max file size: 50MB)</p>
+                    </div>
+                    
+                    <div class="file-card" id="fileCard">
+                        <div class="file-card-header">
+                            <h4>Uploaded Files</h4>
+                            <button class="remove-file" onclick="clearFiles()" aria-label="Clear all files">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="uploaded-files" id="uploadedFiles"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-container" id="progressContainer">
+                    <div class="progress-bar">
+                        <div class="progress" id="progressBar"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">Processing... 0%</div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary btn-lg" id="processBtn">
+                        <i class="fas fa-cogs" aria-hidden="true"></i> Process Files
+                    </button>
+                    <button class="btn btn-outline btn-lg" onclick="showHomePage()">
+                        <i class="fas fa-times" aria-hidden="true"></i> Cancel
+                    </button>
+                </div>
+                
+                <div class="download-card" id="downloadCard">
+                    <i class="fas fa-file-download" aria-hidden="true"></i>
+                    <h3>Your file is ready!</h3>
+                    <p id="outputFileName">processed_document.pdf (2.1 MB)</p>
+                    <button class="btn btn-primary btn-lg" id="downloadBtn">
+                        <i class="fas fa-download" aria-hidden="true"></i> Download PDF
+                    </button>
+                </div>
+                
+                <div class="ad-container ad-banner">
+                    <i class="fas fa-ad" aria-hidden="true"></i>
+                    <div class="ad-label">Advertisement</div>
+                    <div>Google AdSense Leaderboard (728x90)</div>
+                </div>
+            `;
+            
+            main.appendChild(toolPage);
+            
+            // Reset uploaded files
+            uploadedFiles = [];
+            
+            // Show add file button
+            addFileBtn.style.display = 'flex';
+            
+            // Set up event listeners for the tool page
+            setupToolPage();
+        }
+        
+        function setupToolPage() {
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.className = 'file-input';
+            fileInput.accept = '.pdf';
+            fileInput.multiple = true;
+            
+            uploadArea.addEventListener('click', () => {
+                fileInput.click();
+            });
+            
+            fileInput.addEventListener('change', function(e) {
+                handleFileUpload(e.target.files);
+            });
+            
+            // Drag and drop functionality
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, preventDefaults, false);
+            });
+            
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            ['dragenter', 'dragover'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, highlight, false);
+            });
+            
+            ['dragleave', 'drop'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, unhighlight, false);
+            });
+            
+            function highlight() {
+                uploadArea.classList.add('dragover');
+            }
+            
+            function unhighlight() {
+                uploadArea.classList.remove('dragover');
+            }
+            
+            uploadArea.addEventListener('drop', function(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                handleFileUpload(files);
+            }, false);
+            
+            // Add file button event
+            addFileBtn.addEventListener('click', () => {
+                fileInput.click();
+            });
+            
+            // Process button event
+            document.getElementById('processBtn').addEventListener('click', simulateProcessing);
+            
+            // Download button event
+            document.getElementById('downloadBtn').addEventListener('click', downloadFile);
+        }
+        
+        function handleFileUpload(files) {
+            if (files.length > 0) {
+                // Add files to the global array
+                for (let i = 0; i < files.length; i++) {
+                    uploadedFiles.push(files[i]);
+                }
+                
+                // Show file card and hide upload area
+                document.getElementById('fileCard').style.display = 'block';
+                
+                // Update uploaded files display
+                updateUploadedFilesDisplay();
+            }
+        }
+        
+        function updateUploadedFilesDisplay() {
+            const uploadedFilesContainer = document.getElementById('uploadedFiles');
+            uploadedFilesContainer.innerHTML = '';
+            
+            if (uploadedFiles.length === 0) {
+                document.getElementById('fileCard').style.display = 'none';
+                return;
+            }
+            
+            let totalSize = 0;
+            
+            uploadedFiles.forEach((file, index) => {
+                const fileSize = (file.size / 1024 / 1024).toFixed(1);
+                totalSize += file.size;
+                
+                const filePill = document.createElement('div');
+                filePill.className = 'file-pill';
+                filePill.innerHTML = `
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <span>${file.name} (${fileSize} MB)</span>
+                    <i class="fas fa-times" onclick="removeFile(${index})" aria-label="Remove file"></i>
+                `;
+                
+                uploadedFilesContainer.appendChild(filePill);
+            });
+            
+            // Update total size display
+            const totalSizeMB = (totalSize / 1024 / 1024).toFixed(1);
+            document.querySelector('.file-card-header h4').textContent = 
+                `Uploaded Files (${uploadedFiles.length}) - ${totalSizeMB} MB`;
+        }
+        
+        function removeFile(index) {
+            uploadedFiles.splice(index, 1);
+            updateUploadedFilesDisplay();
+        }
+        
+        function clearFiles() {
+            uploadedFiles = [];
+            updateUploadedFilesDisplay();
+        }
+        
+        function simulateProcessing() {
+            if (uploadedFiles.length === 0) {
+                alert('Please upload at least one file');
+                return;
+            }
+            
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            const progressContainer = document.getElementById('progressContainer');
+            const downloadCard = document.getElementById('downloadCard');
+            
+            progressContainer.style.display = 'block';
+            let progress = 0;
+            
+            const interval = setInterval(() => {
+                progress += Math.floor(Math.random() * 10);
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    
+                    // Update output file name
+                    const outputName = uploadedFiles.length > 1 ? 
+                        currentTool.toLowerCase().replace(' ', '_') + '_document.pdf' : 
+                        uploadedFiles[0].name.replace('.pdf', '_processed.pdf');
+                    const outputSize = (uploadedFiles.reduce((acc, file) => acc + file.size, 0) / 1024 / 1024).toFixed(1);
+                    document.getElementById('outputFileName').textContent = 
+                        `${outputName} (${outputSize} MB)`;
+                    
+                    // Show download button after a delay
+                    setTimeout(() => {
+                        downloadCard.style.display = 'block';
+                        downloadCard.classList.add('fade-in');
+                    }, 500);
+                }
+                
+                progressBar.style.width = `${progress}%`;
+                progressText.textContent = `Processing... ${progress}%`;
+            }, 200);
+        }
+        
+        function downloadFile() {
+            // Create a valid PDF file using jsPDF
+            const fileName = document.getElementById('outputFileName').textContent.split(' ')[0];
+            
+            // Initialize jsPDF
+            const doc = new jsPDF();
+            
+            // Set document properties
+            doc.setProperties({
+                title: fileName.replace('.pdf', ''),
+                subject: `Processed with PDF Tools Pro - ${currentTool}`,
+                author: 'PDF Tools Pro',
+                creator: 'PDF Tools Pro'
+            });
+            
+            // Add cover page with tool information
+            doc.setFontSize(28);
+            doc.text(`PDF Tools Pro - ${currentTool}`, 105, 40, null, null, 'center');
+            
+            doc.setFontSize(18);
+            doc.setTextColor(100);
+            doc.text('Your Document Has Been Processed', 105, 60, null, null, 'center');
+            
+            doc.setFontSize(14);
+            doc.text(`Processing Date: ${new Date().toLocaleDateString()}`, 105, 80, null, null, 'center');
+            doc.text(`Number of Files: ${uploadedFiles.length}`, 105, 90, null, null, 'center');
+            
+            // Add file list
+            doc.setFontSize(12);
+            doc.setTextColor(0);
+            let y = 110;
+            doc.text('Files processed:', 20, y);
+            y += 10;
+            
+            uploadedFiles.forEach((file, index) => {
+                if (y > 250) {
+                    doc.addPage();
+                    y = 20;
+                }
+                doc.text(`${index + 1}. ${file.name} (${(file.size / 1024 / 1024).toFixed(1)} MB)`, 25, y);
+                y += 8;
+            });
+            
+            // Add processing details
+            if (currentTool === 'Merge PDF') {
+                doc.addPage();
+                doc.setFontSize(16);
+                doc.text('Merged Document Content', 105, 20, null, null, 'center');
+                doc.setFontSize(12);
+                
+                // Generate sample merged content
+                const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+                
+                for (let i = 0; i < 5; i++) {
+                    const pageContent = `Page ${i + 1} of merged document\n\n${lorem}`;
+                    doc.text(pageContent, 20, 40 + (i * 50));
+                    if (i < 4) doc.addPage();
+                }
+            }
+            else if (currentTool === 'Compress PDF') {
+                doc.addPage();
+                doc.setFontSize(16);
+                doc.text('Compressed Document Content', 105, 20, null, null, 'center');
+                doc.setFontSize(12);
+                
+                // Generate sample compressed content
+                doc.text('This document has been compressed by PDF Tools Pro.', 20, 40);
+                doc.text(`Original size: ${uploadedFiles.reduce((acc, file) => acc + file.size, 0) / 1024} KB`, 20, 50);
+                doc.text(`Compressed size: ${uploadedFiles.reduce((acc, file) => acc + file.size, 0) / 1024 / 2} KB`, 20, 60);
+                doc.text('Compression ratio: 50%', 20, 70);
+            }
+            else {
+                // Default content for other tools
+                doc.addPage();
+                doc.setFontSize(16);
+                doc.text(`${currentTool} Processing Complete`, 105, 20, null, null, 'center');
+                doc.setFontSize(12);
+                doc.text('Your document has been successfully processed by PDF Tools Pro.', 20, 40);
+                doc.text('Thank you for using our service!', 20, 50);
+            }
+            
+            // Add watermark
+            const totalPages = doc.internal.getNumberOfPages();
+            for (let i = 1; i <= totalPages; i++) {
+                doc.setPage(i);
+                doc.setFontSize(60);
+                doc.setTextColor(230, 230, 230);
+                doc.text('PDF Tools Pro', 105, 150, null, null, 'center');
+                doc.setTextColor(0);
+            }
+            
+            // Save the PDF
+            doc.save(fileName);
+        }
+    </script>
+</body>
+</html>
